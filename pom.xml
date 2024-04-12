@@ -1,13 +1,18 @@
+<!-- L'arxiu pom.xml és un part crucial del projecte Maven en Java. Maven és un eina de gestió de porjectes
+que facilita la compilació, l'empaquetat i la gestió de dependències en projectes de java. Aquest fitxer
+conté la configuració del projecte, inclus les dependències del projecte, la configuració de compilació i
+altres configuracions relacionades amb Maven-->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion> <!-- definex la versió del model de projecte Maven que s'està utilitzant-->
 
     <groupId>edu.upc.dsa</groupId>
-    <artifactId>rest-example2</artifactId>
+    <artifactId>Minim1_Carla_Otero</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>rest-example2</name>
+    <name>rest-example2</name> <!-- aquí fiquem el nom del projecte-->
 
     <dependencyManagement>
         <dependencies>
@@ -53,6 +58,10 @@
             <version>4.9</version>
             <scope>test</scope>
         </dependency>
+<!--io.swagger és una biblioteca de codi obert que s'utilitza per treballar amb la especificació OpenAPI (Swagger).
+OpenApi és una especificació per descriure i documentar APIs de serveis web. Proporciona una forma estàndard per
+definir l'estructura d'una API, inclus els endpoints disponibles, els paraàmetres que accepta cada endpoint, els
+tipus de dades d'entrada i sortida. -->
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-jersey2-jaxrs</artifactId>
@@ -75,8 +84,8 @@
                 <version>2.5.1</version>
                 <inherited>true</inherited>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
             <plugin>

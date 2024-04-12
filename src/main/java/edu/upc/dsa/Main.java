@@ -11,15 +11,18 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
- * Main class.
+ * Es defineix la classe Main
  *
  */
 public class Main {
-    // Base URI the Grizzly HTTP server will listen on
+
+
+    // Es defineix la variable estàtica BASE_URI que representa la direcció base del servidor HTTP Grizzly
     public static final String BASE_URI = "http://localhost:8080/dsaApp/";
 
+
     /**
-     * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
+     * Inicia el servidor HTTP Grizzly exposant els recursos JAX-RS definits en aquesta aplicació
      * @return Grizzly HTTP server.
      */
     public static HttpServer startServer() {
@@ -50,21 +53,26 @@ public class Main {
 
 
     /**
-     * Main method.
+     * Mètode Main --> és el mètode d'entrada principal de l'aplicació.
      * @param args
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         final HttpServer server = startServer();
 
+//Es crea un "StaticHttpHandler" que maneja les sol·licituds estàtiques i se li assigna la ruta /public/.
+//Aixo significa que les sol·licituds que coincideixin amb aquesta ruta seràn manejades pel StaticHttpHandler,
+// que servirà arxius estàtics des del directori públic.
         StaticHttpHandler staticHttpHandler = new StaticHttpHandler("./public/");
+
         server.getServerConfiguration().addHttpHandler(staticHttpHandler, "/");
 
-
+//S'imprimeix un missatge en pantalla indicant que l'aplicació Jersey s'ha iniciat correctament, junt amb
+//l'URL on es pot accedir a la documentació WADL de la API: http://localhost:8080/swagger/#/
         System.out.println(String.format("Jersey app started with WADL available at "
                 + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
 
-        System.in.read();
+        System.in.read(); //espera que es presioni enter
         server.stop();
     }
 }

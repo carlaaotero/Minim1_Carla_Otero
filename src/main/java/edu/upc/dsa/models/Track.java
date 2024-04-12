@@ -4,21 +4,26 @@ import edu.upc.dsa.util.RandomUtils;
 
 public class Track {
 
+/*Atributs de la classe*/
     String id;
     String title;
     String singer;
-    static int lastId;
+    static int lastId; //variable estàtica per emmagatzemar l'últim ID generat
 
+/*Constructor que genera un ID únic utilitzant la classe RandomUtils*/
     public Track() {
+
         this.id = RandomUtils.getId();
     }
 
+/*Constructor amb paràmetres per inicialitzar el títol i el cantant de la pista*/
     public Track(String title, String singer) {
-        this();
-        this.setSinger(singer);
-        this.setTitle(title);
+        this(); //crida al primer constructor per inicialitzar l'ID
+        this.setSinger(singer); //estableix el cantant a la pista
+        this.setTitle(title); //estableix el títol a la pista
     }
 
+/*Mètodes getter i setter*/
     public String getId() {
         return this.id;
     }
@@ -44,6 +49,7 @@ public class Track {
         this.singer = singer;
     }
 
+/*Mètode toString per obtenir una representació de cadena de la pista*/
     @Override
     public String toString() {
         return "Track [id="+id+", title=" + title + ", singer=" + singer +"]";
