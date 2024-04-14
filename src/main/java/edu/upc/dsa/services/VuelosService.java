@@ -1,6 +1,10 @@
 package edu.upc.dsa.services;
 
 
+import edu.upc.dsa.VuelosManager;
+import edu.upc.dsa.VuelosManagerImpl;
+import edu.upc.dsa.models.Dron;
+import edu.upc.dsa.models.Pilot;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,26 +16,63 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-/*Aquesta classe actua com a servei web RESTful per gestionar pistes de cançons*/
-@Api(value = "/tracks", description = "Endpoint to Track Service")
+/*Aquesta classe actua com a servei web RESTful per gestionar drons*/
+@Api(value = "/drons", description = "Endpoint to Drons Service")
 @Path("/tracks")
-public class TracksService {
+public class VuelosService {
 
-    private TracksManager tm;
+    private VuelosManager tm;
 
-    public TracksService() {
-        this.tm = TracksManagerImpl.getInstance(); //obté una instància del gestor de pistes
-        if (tm.size()==0) {
-            //si el gestor de pistes està buit, agrega algunes pistes d'exemple
-            this.tm.addTrack("La Barbacoa", "Georgie Dann");
-            this.tm.addTrack("Despacito", "Luis Fonsi");
-            this.tm.addTrack("Enter Sandman", "Metallica");
-        }
-
-
+    public VuelosService() {
+        this.tm = VuelosManagerImpl.getInstance(); //obté una instància del VuelosManager
     }
 
-    @GET
+
+    @POST
+    @ApiOperation(value = "Afegir un Dron", notes = "new Dron")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successful", response= Dron.class),
+            @ApiResponse(code = 500, message = "Validation Error")
+
+    })
+
+    @Path("/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response afegirDron(Dron dron) {
+        //si tota la info no es correcta retorna 500 (Validation Error)
+        if (dron.getIdDron()==null || dron.getNomDron()==null || dron.getModel()==null || dron.getFabricant() == null)
+            return Response.status(500).entity(dron).build();
+        VuelosManager man = VuelosManagerImpl.getInstance();
+        man.afegirDron(dron.getIdDron(), dron.getNomDron(), dron.getFabricant(), dron.getModel(), dron.getHoresDron());//agrega el nou dron al gestor de vols
+        return Response.status(201).entity(dron).build();
+    }
+    /*@POST
+    @ApiOperation(value = "Afegir un Pilot", notes = "new Pilot")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successful", response= Pilot.class),
+            @ApiResponse(code = 500, message = "Validation Error")
+
+    })
+
+    @Path("/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response afegirPilot(Pilot pilot) {
+        //si tota la info no es correcta retorna 500 (Validation Error)
+        if (pilot.getIdPilot()==null || pilot.getNomPilot()==null || pilot.getCognomPilot()==null)
+            return Response.status(500).entity(pilot).build();
+        VuelosManager man = VuelosManagerImpl.getInstance();
+        man.afegirPilot(pilot.getIdPilot(), pilot.getNomPilot(), pilot.getCognomPilot(), pilot.getHoresPilot());//agrega el nou pilot al gestor de vols
+        return Response.status(201).entity(pilot).build();
+    }*/
+
+
+
+
+
+
+
+
+/* @GET
     @ApiOperation(value = "get all Track", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successful", response = Track.class, responseContainer="List"),
@@ -94,25 +135,6 @@ public class TracksService {
         return Response.status(201).build();
     }
 
-
-
-    @POST
-    @ApiOperation(value = "create a new Track", notes = "asdasd")
-    @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Successful", response=Track.class),
-            @ApiResponse(code = 500, message = "Validation Error")
-
-    })
-
-    @Path("/")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response newTrack(Track track) {
-        //crea una nova pista amb la info proporcionada
-        //si el títol o el cantant no estan especificats retorna 500 (Validation Error)
-        if (track.getSinger()==null || track.getTitle()==null)
-            return Response.status(500).entity(track).build();
-        this.tm.addTrack(track);//agrega la nova pista al gestor de pistes
-        return Response.status(201).entity(track).build();
-    }
+*/
 
 }

@@ -9,16 +9,15 @@ public class Pilot {
     String cognomPilot;
     public int horesPilot;
 
-    /*Constructor que genera un ID únic utilitzant la classe RandomUtils*/
+
     public Pilot() {
-        this.idPilot = RandomUtils.getId();
     }
 
     /*Constructor amb paràmetres per inicialitzar el nom del dron, el fabricant i el model*/
-    public Pilot(String nomPilot, String cognomPilot, int horesPilot){
-        this(); //crida al primer constructor per inicialitzar l'ID del pilot
-        this.setNomPilot(nomPilot); //estableix el nom del Pilot
-        this.setCognomPilot(cognomPilot); //estableix el cognom del Pilot
+    public Pilot(String idPilot, String nomPilot, String cognomPilot, int horesPilot){
+        this.setIdPilot(idPilot);
+        this.setNomPilot(nomPilot);
+        this.setCognomPilot(cognomPilot);
         this.setHoresPilot(horesPilot);
     }
 
@@ -53,6 +52,6 @@ public class Pilot {
     }
 
     public void setHoresPilot(int horesPilot) {
-        this.horesPilot = horesPilot;
+        this.horesPilot = 0;
     }
 }

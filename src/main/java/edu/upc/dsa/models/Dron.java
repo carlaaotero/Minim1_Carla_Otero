@@ -10,16 +10,16 @@ public class Dron {
     String model;
     public int horesDron;
 
-    /*Constructor que genera un ID únic utilitzant la classe RandomUtils*/
+
     public Dron() {
-        this.idDron = RandomUtils.getId();
+
     }
 
     /*Constructor amb paràmetres per inicialitzar el nom del dron, el fabricant i el model*/
-    public Dron(String nomDron, String fabricant, String model, int horesDron){
-        this(); //crida al primer constructor per inicialitzar l'ID del dron
-        this.setNomDron(nomDron); //estableix el nom del Dron
-        this.setFabricant(fabricant); //estableix el fabricant
+    public Dron(String idDron, String nomDron, String fabricant, String model, int horesDron){
+        this.setIdDron(idDron);
+        this.setNomDron(nomDron);
+        this.setFabricant(fabricant);
         this.setModel(model);
         this.setHoresDron(horesDron);
     }
@@ -62,6 +62,7 @@ public class Dron {
     }
 
     public void setHoresDron(int horesDron) {
-        this.horesDron = horesDron;
+        this.horesDron = 0;
     }
+
 }

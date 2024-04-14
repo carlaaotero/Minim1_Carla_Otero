@@ -5,12 +5,16 @@ S'ha implementat les classes:
 - Pilot : + atributs + setters i getters
 - PlanDeVuelo : atributs + setters i getters
 
-- AlmacenDrones
-- VuelosManagerImpl (interficie)
-- VuelosManager
+- VuelosManager (interficie)
+- VuelosManagerImpl 
+	· Funcions realitzades (TOTES)
+		afegirDron    
+		afegirPilot    
+		ordenarLlistaDrones 
+		ordenarLlistaPilots  
+		afegirReserva
+		llistaReservesPilot    
+		llistaReservasDron
 
-Hi ha funciones que no he pogut acabar:  
-- Añadir una reserva para un plan de vuelo
-- Listado de reservas de planes de vuelo que han sido asignados a
-un piloto.
-- Listado de planes de vuelo que han sido asignadas a un dron
+Informació adiccional: 
+A la segona entrega he eliminat la classe AlmacenDrones, ja que he ficat totes les seves funcions a la classe de VuelosManagerImpl perquè fos més pràctic tot. Per altra banda, he acabat de fer totes les funcions. A l'hora de fer el test per veure si funcionen correctament només he provat la primera funció, la d'afegir un Dron (funciona correctament). Quan afegeixo el codi per implementar afegirPilot no em compila bé. 

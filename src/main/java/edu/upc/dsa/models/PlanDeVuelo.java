@@ -1,6 +1,7 @@
 package edu.upc.dsa.models;
 import edu.upc.dsa.models.Dron;
 import edu.upc.dsa.models.Pilot;
+import edu.upc.dsa.util.RandomUtils;
 
 public class PlanDeVuelo {
     /*Atributs de la classe*/
@@ -10,18 +11,27 @@ public class PlanDeVuelo {
     String horesReserva;
     String posicioInici;
     String posicioDesti;
-    String nomPilot;
+    String idPilot;
+    String idPlanDeVuelo;
+
+
+    public PlanDeVuelo() {
+
+    }
 
     /*Constructor amb paràmetres per inicialitzar*/
-    public PlanDeVuelo(String idDron, String dia, String hora, String horesReserva, String posicioInici, String posicioDesti, String nomPilot){
+    public PlanDeVuelo(String idPlanDeVuelo, String idDron, String dia, String hora, String horesReserva, String posicioInici, String posicioDesti, String idPilot){
+        this.setIdPlanDeVuelo(idPlanDeVuelo);
         this.setIdDron(idDron);
         this.setDia(dia);
         this.setHora(hora);
         this.setHoresReserva(horesReserva);
         this.setPosicioInici(posicioInici);
         this.setPosicioDesti(posicioDesti);
-        this.setNomPilot(nomPilot);
+        this.setIdPilot(idPilot);
+
     }
+
 
     /*Mètodes de setters i getters dels atributs*/
 
@@ -73,11 +83,19 @@ public class PlanDeVuelo {
         this.posicioDesti = posicioDesti;
     }
 
-    public String getNomPilot() {
-        return nomPilot;
+    public String getIdPilot() {
+        return idPilot;
     }
 
-    public void setNomPilot(String nomPilot) {
-        this.nomPilot = nomPilot;
+    public void setIdPilot(String idPilot) {
+        this.idPilot = idPilot;
+    }
+
+    public String getIdPlanDeVuelo() {
+        return idPlanDeVuelo;
+    }
+
+    public void setIdPlanDeVuelo(String idPlanDeVuelo) {
+        this.idPlanDeVuelo = idPlanDeVuelo;
     }
 }
